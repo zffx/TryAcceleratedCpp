@@ -5,7 +5,8 @@ CONFIG -= qt
 SOURCES += \
     FramingAName.cpp \
     Main.cpp \
-    Avg.cpp
+    Avg.cpp \
+    Med.cpp
 
 HEADERS += \
     Declaration.h

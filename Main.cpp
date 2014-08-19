@@ -9,7 +9,8 @@ int main()
 {
     cout << "Input the number to run:" <<endl
          << "1. Framing a name" << endl
-         << "2. Calculate Avg Grade" << endl;
+         << "2. Calculate Avg Grade" << endl
+         << "3. Calculate Med Grade" << endl;
     unsigned int choice = 0;
     cin >> choice ;
     switch(choice)
@@ -19,6 +20,10 @@ int main()
         break;
     case 2:
         avg();
+        break;
+    case 3:
+        med();
+        break;
     default:
         break;
     }
