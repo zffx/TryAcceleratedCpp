@@ -3,3 +3,8 @@ Makefile.Debug
 Makefile.Release
 TryAcceleratedCpp.pro.user
 debug/
+.cproject
+.project
+.settings/
+Default/
+
