@@ -6,8 +6,10 @@ SOURCES += \
     FramingAName.cpp \
     Main.cpp \
     Avg.cpp \
-    Med.cpp
+    Med.cpp \
+    Studentinfo.cpp
 
 HEADERS += \
-    Declaration.h
+    Declaration.h \
+    Studentinfo.h
 

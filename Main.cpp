@@ -21,10 +21,10 @@ int main()
         framingAName();
         break;
     case 2:
-        avg();
+        Utils::avg();
         break;
     case 3:
-        med();
+        Utils::med();
         break;
     default:
         break;

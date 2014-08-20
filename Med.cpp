@@ -7,6 +7,7 @@
 #include <stdexcept> //std::domain_error
 
 #include "Declaration.h"
+#include "Studentinfo.h"
 
 using std::string;
 using std::cin;
@@ -16,13 +17,9 @@ using std::streamsize;
 using std::setprecision;
 using std::vector;
 
-typedef vector<double>::size_type vecDoublesz;
-
-std::istream& readHomeworkGrades(std::istream& in,
-								 std::vector<double>& homeworkGrades)
+namespace Utils
 {
-
-}
+typedef vector<double>::size_type vecDoublesz;
 
 double median(std::vector<double> homeworkGrades)
 {
@@ -45,23 +42,24 @@ double median(std::vector<double> homeworkGrades)
 
 double grade(double midterm, double final, double homework)
 {
-	return midterm * 0.2 + final * 0.4 + homework * 0.4;
+    return midterm * 0.2 + final * 0.4 + homework * 0.4;
 }
 
 double grade(double midterm,
-			 double final,
-			 const std::vector<double>& homeworkGrades)
+             double final,
+             const std::vector<double>& homeworkGrades)
 {
     if (homeworkGrades.size() == 0)
     {
         throw std::domain_error("Homework Grades cannot be empty!");
     }
 
-	return grade(midterm, final, median(homeworkGrades));
+    return grade(midterm, final, median(homeworkGrades));
 }
 
 void med()
 {
+    /*
     cout << "Enter your first name: " << endl;
     string name;
     cin >> name;
@@ -74,16 +72,22 @@ void med()
     cout << "Enter all your homework grades, followed by end-of-file";
 
     vector<double> homeworkGrades;
-
-    double current = 0;
-
-    while(cin >> current)
+    readHomeworkGrades(cin, homeworkGrades);
+    */
+    StudentInfo student(cin);
+    try
     {
-        homeworkGrades.push_back(current);
+        streamsize defaultPrec = cout.precision();
+        cout << "Your overall grade is " << setprecision(3) <<
+                student.grade() <<
+                setprecision(defaultPrec) << endl;
+    }
+    catch (std::domain_error)
+    {
+        cout << endl << "You must enter your grades. "
+                "Please try again. " << endl;
+        return;
     }
 
-    streamsize defaultPrec = cout.precision();
-    cout << "Your overall grade is " << setprecision(3) <<
-    		grade(midterm, final, homeworkGrades) <<
-    		setprecision(defaultPrec) << endl;
+}
 }

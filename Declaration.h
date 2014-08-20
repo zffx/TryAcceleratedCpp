@@ -5,20 +5,19 @@
 #include <istream>
 
 void framingAName();
-void avg();
 
-std::istream& readHomeworkGrades(
-		std::istream& in,
-		std::vector<double>& homeworkGrades);
+namespace Utils
+{
+void avg();
 
 double median(std::vector<double> homeworkGrades);
 
 double grade(double midterm, double final, double homework);
 double grade(
-		double midterm,
-		double final,
-		const std::vector<double>& homeworkGrades);
+        double midterm,
+        double final,
+        const std::vector<double>& homeworkGrades);
 
 void med();
-
+}
 #endif // DECLARATION_H
