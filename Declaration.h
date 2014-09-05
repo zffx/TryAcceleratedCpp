@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <istream>
+#include "Studentinfo.h"
 
 void framingAName();
 
@@ -19,5 +20,7 @@ double grade(
         const std::vector<double>& homeworkGrades);
 
 void med();
+
+bool gradeFail(const StudentInfo& studentInfo);
 }
 #endif // DECLARATION_H

@@ -57,6 +57,11 @@ double grade(double midterm,
     return grade(midterm, final, median(homeworkGrades));
 }
 
+bool gradeFail(const StudentInfo& studentInfo)
+{
+    return studentInfo.grade() >= 60 ? true : false;
+}
+
 void med()
 {
     vector<StudentInfo> studentList;
