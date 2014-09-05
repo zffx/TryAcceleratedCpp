@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
+#include <algorithm> //std::sort
 #include <stdexcept> //std::domain_error
 
 #include "Declaration.h"
@@ -51,7 +51,7 @@ double grade(double midterm,
 {
     if (homeworkGrades.size() == 0)
     {
-        throw std::domain_error("Homework Grades cannot be empty!");
+        throw std::domain_error("Student hasn't done any homework!");
     }
 
     return grade(midterm, final, median(homeworkGrades));
@@ -59,35 +59,32 @@ double grade(double midterm,
 
 void med()
 {
-    /*
-    cout << "Enter your first name: " << endl;
-    string name;
-    cin >> name;
-    cout << "Hello, " << name << "!" << endl;
-
-    cout << "Enter your midterm and final exam grades: ";
-    double midterm, final;
-    cin >> midterm >> final;
-
-    cout << "Enter all your homework grades, followed by end-of-file";
-
-    vector<double> homeworkGrades;
-    readHomeworkGrades(cin, homeworkGrades);
-    */
-    StudentInfo student(cin);
-    try
+    vector<StudentInfo> studentList;
+    StudentInfo student;
+    string::size_type maxLength = 0;
+    while (student.readStudentInfo(cin))
     {
-        streamsize defaultPrec = cout.precision();
-        cout << "Your overall grade is " << setprecision(3) <<
-                student.grade() <<
-                setprecision(defaultPrec) << endl;
-    }
-    catch (std::domain_error)
-    {
-        cout << endl << "You must enter your grades. "
-                "Please try again. " << endl;
-        return;
+        maxLength = std::max(maxLength, student.name().size());
+        studentList.push_back(student);
     }
 
+    std::sort(studentList.begin(), studentList.end(), compare);
+    for(vector<StudentInfo>::size_type i = 0; i < studentList.size(); i++)
+    {
+        try
+        {
+            streamsize defaultPrec = cout.precision();
+            cout << studentList.at(i).name()<<"\'s"
+                 << string(maxLength - studentList.at(i).name().size()+1, ' ')
+                 <<" overall grade is "
+                 << setprecision(3) << studentList.at(i).grade()
+                 << setprecision(defaultPrec) << endl;
+        }
+        catch (std::domain_error e)
+        {
+            cout << e.what(); //what() can get a copy of the error message.
+            return;
+        }
+    }
 }
 }

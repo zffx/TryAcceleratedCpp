@@ -11,17 +11,11 @@ public:
     StudentInfo();
     StudentInfo(std::istream& in);
 
+    std::istream& readStudentInfo(std::istream& in);
     std::istream& readHomeworkGrades(std::istream& in);
     double grade() const;
 
-    std::string Name() const;
-    void setName(const std::string& name);
-    double Midterm() const;
-    void setMidterm(double midterm);
-    double Final() const;
-    void setFinal(double final);
-    std::vector<double> HomeworkGrades() const;
-    const std::vector<double> &HomeworkGradesConst() const;
+    std::string name() const;
 
 private:
     std::string mName;
@@ -30,4 +24,5 @@ private:
     std::vector<double> mHomeworkGrades;
 };
 
+    bool compare(const StudentInfo& student1, const StudentInfo& student2);
 #endif // STUDENTINFO_H

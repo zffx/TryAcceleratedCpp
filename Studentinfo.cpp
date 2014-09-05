@@ -14,8 +14,15 @@ StudentInfo::StudentInfo()
 StudentInfo::StudentInfo(std::istream& in)
 {
     cout << "StudentInfo::StudentInfo(std::istream& in)" << endl;
+    readStudentInfo(in);
+}
+
+std::istream& StudentInfo::readStudentInfo(std::istream& in)
+{
+    cout << "StudentInfo::readStudentInfo(std::istream& in)" << endl;
     in >> mName >> mMidterm >> mFinal;
     readHomeworkGrades(in);
+    return in;
 }
 
 std::istream& StudentInfo::readHomeworkGrades(std::istream& in)
@@ -37,3 +44,14 @@ double StudentInfo::grade() const
 {
     return Utils::grade(mMidterm, mFinal, mHomeworkGrades);
 }
+
+std::string StudentInfo::name() const
+{
+    return mName;
+}
+
+bool compare(const StudentInfo& student1, const StudentInfo& student2)
+{
+    return student1.name()< student2.name();
+}
+
