@@ -13,22 +13,20 @@ vector<string> split(const string& sentence)
     string::size_type i = 0 , j = 0;
     while(i < sentence.size())
     {
-        if(sentence.at(i) != ' ')
+        // ignore leading blanks
+        while(i != sentence.size() && isspace(sentence[i])) //isspace!!
+            ++i;
+        j = i;
+
+        // find end of next word
+        while(j != sentence.size() && !isspace(sentence[j]))
+            ++j;
+
+        // if we found some nonwhitespace characters
+        if(i != j )
         {
-            while(j < sentence.size() && sentence.at(j) == ' ')
-            {
-                ++j;
-            }
-            while(j < sentence.size() && sentence.at(j)!= ' ')
-            {
-                ++j;
-            }
             ret.push_back(sentence.substr(i,j - i));
             i = j;
-        }
-        else
-        {
-            ++i;
         }
     }
     return ret;
@@ -36,14 +34,12 @@ vector<string> split(const string& sentence)
 
 void splitAString()
 {
-    cout << "Input your string with some space to split" << endl;
+    cout << "The sentence is: Welcome to my world!" << endl;
     string sentence = "  Welcome to my world! ";
-    //std::getline(std::cin,sentence);
-    cout << sentence << endl;
     vector<string> afterSplit;
     afterSplit = split(sentence);
     vector<string>::const_iterator constIter = afterSplit.begin();
-    cout << "Here is the result" << endl;
+    cout << "Here is the result after split:" << endl;
     while(constIter != afterSplit.end())
     {
         cout << *constIter << endl;
