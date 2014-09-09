@@ -7,7 +7,8 @@ SOURCES += \
     Main.cpp \
     Avg.cpp \
     Med.cpp \
-    Studentinfo.cpp
+    Studentinfo.cpp \
+    Split.cpp
 
 HEADERS += \
     Declaration.h \

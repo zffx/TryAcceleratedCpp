@@ -28,4 +28,8 @@ std::vector<StudentInfo> extractFails(std::vector<StudentInfo>& students);
 std::vector<StudentInfo> extractFailsByIter(std::vector<StudentInfo>& students);
 
 }
+
+void splitAString();
+std::vector<std::string> split(const std::string& sentence);
+
 #endif // DECLARATION_H
