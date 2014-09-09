@@ -80,6 +80,29 @@ vector<StudentInfo> extractFails(vector<StudentInfo>& students)
     return fails;
 }
 
+vector<StudentInfo> extractFailsByIter(vector<StudentInfo>& students)
+{
+    vector<StudentInfo> fails;
+    vector<StudentInfo>::iterator iter = students.begin();
+    while(iter != students.end())//you have to keep students.end() here for each
+    //round of the loop, instead of take the value first(e.g. assign it to end_iter)
+    //and use it here, since erase() invalidates the end_iter.
+    {
+        if(gradeFail(*iter))
+        {
+            fails.push_back(*iter);
+            iter = students.erase(iter); /* You have to assign the return value
+            back to iter again! Since vector.erase(iter) invalidates the iter
+            and all iterators that refer to elements after the one that was just
+            erased. erase() returns an iterator that is poistioned on the element
+            that follows the one that we just erased.*/
+        }
+        else
+            ++iter;
+    }
+    return fails;
+}
+
 void med()
 {
     vector<StudentInfo> studentList;
@@ -91,8 +114,41 @@ void med()
         studentList.push_back(student);
     }
 
-    //studentList = extractFails(studentList); //uncomment to exam extractFails(
+    //studentList = extractFails(studentList); //uncomment to exam extractFails()
+    studentList = extractFailsByIter(studentList);
     std::sort(studentList.begin(), studentList.end(), compare);
+
+    //iterator version
+    for(vector<StudentInfo>::const_iterator iter = studentList.begin();
+        iter != studentList.end();
+        ++iter)
+    {
+        try
+        {
+            streamsize defaultPrec = cout.precision();
+            cout << iter->name()<<"\'s"
+                 << string(maxLength - (*iter).name().size()+1, ' ')
+        /*
+        In order to execute correctly, this expression requires parentheses that
+        override the normal operator precedence. The exporession *iter returns
+        the value that the iterator iter denotes. The precedence of . is higher
+        than the precedence of *, wich means  that if we want the * operations
+        to apply only to the left operand of the ., we must enclose *iter in
+        parentheses to get (*iter). If we wrote *iter.name, the complier would
+        treat it as *(iter.name).
+        */
+                 <<" overall grade is "
+                 << setprecision(3) << (*iter).grade()
+                 << setprecision(defaultPrec) << endl;
+        }
+        catch (std::domain_error e)
+        {
+            cout << e.what(); //what() can get a copy of the error message.
+        }
+    }
+    cout << endl << endl;
+
+    //index version
     for(vector<StudentInfo>::size_type i = 0; i < studentList.size(); i++)
     {
         try

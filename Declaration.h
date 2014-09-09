@@ -25,5 +25,7 @@ bool gradeFail(const StudentInfo& studentInfo);
 
 std::vector<StudentInfo> extractFails(std::vector<StudentInfo>& students);
 
+std::vector<StudentInfo> extractFailsByIter(std::vector<StudentInfo>& students);
+
 }
 #endif // DECLARATION_H
