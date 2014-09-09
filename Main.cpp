@@ -29,6 +29,7 @@ int main()
         break;
     case 4:
         splitAString();
+        break;
     default:
         break;
     }

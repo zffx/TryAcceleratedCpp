@@ -141,7 +141,7 @@ void med()
                  << setprecision(3) << (*iter).grade()
                  << setprecision(defaultPrec) << endl;
         }
-        catch (std::domain_error e)
+        catch (std::domain_error &e)
         {
             cout << e.what(); //what() can get a copy of the error message.
         }
@@ -160,7 +160,7 @@ void med()
                  << setprecision(3) << studentList.at(i).grade()
                  << setprecision(defaultPrec) << endl;
         }
-        catch (std::domain_error e)
+        catch (std::domain_error &e)
         {
             cout << e.what(); //what() can get a copy of the error message.
             return;

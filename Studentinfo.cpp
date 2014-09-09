@@ -6,7 +6,7 @@
 using std::cout;
 using std::endl;
 
-StudentInfo::StudentInfo()
+StudentInfo::StudentInfo() : mMidterm(0.0), mFinal(0.0)
 {
     cout << "StudentInfo::StudentInfo()" << endl;
 }
