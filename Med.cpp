@@ -59,7 +59,25 @@ double grade(double midterm,
 
 bool gradeFail(const StudentInfo& studentInfo)
 {
-    return studentInfo.grade() >= 60 ? true : false;
+    return studentInfo.grade() < 60 ? true : false;
+}
+
+vector<StudentInfo> extractFails(vector<StudentInfo>& students)
+{
+    vector<StudentInfo> fails;
+    vector<StudentInfo>::size_type i = 0;
+    while(i < students.size()) //students.size() can change in the loop!
+    {
+        if(gradeFail(students.at(i)))
+        {
+            fails.push_back(students.at(i));
+            students.erase(students.begin()+i); //you can only erase an element
+            //by an iterator! students.begin()+i
+        }
+        else
+            ++i;
+    }
+    return fails;
 }
 
 void med()
@@ -73,6 +91,7 @@ void med()
         studentList.push_back(student);
     }
 
+    //studentList = extractFails(studentList); //uncomment to exam extractFails(
     std::sort(studentList.begin(), studentList.end(), compare);
     for(vector<StudentInfo>::size_type i = 0; i < studentList.size(); i++)
     {

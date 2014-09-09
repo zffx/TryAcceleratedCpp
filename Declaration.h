@@ -22,5 +22,8 @@ double grade(
 void med();
 
 bool gradeFail(const StudentInfo& studentInfo);
+
+std::vector<StudentInfo> extractFails(std::vector<StudentInfo>& students);
+
 }
 #endif // DECLARATION_H
