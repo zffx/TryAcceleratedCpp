@@ -3,22 +3,33 @@
 
 #include <vector>
 #include <istream>
+#include "Studentinfo.h"
 
 void framingAName();
-void avg();
 
-std::istream& readHomeworkGrades(
-		std::istream& in,
-		std::vector<double>& homeworkGrades);
+namespace Utils
+{
+void avg();
 
 double median(std::vector<double> homeworkGrades);
 
 double grade(double midterm, double final, double homework);
 double grade(
-		double midterm,
-		double final,
-		const std::vector<double>& homeworkGrades);
+        double midterm,
+        double final,
+        const std::vector<double>& homeworkGrades);
 
 void med();
+
+bool gradeFail(const StudentInfo& studentInfo);
+
+std::vector<StudentInfo> extractFails(std::vector<StudentInfo>& students);
+
+std::vector<StudentInfo> extractFailsByIter(std::vector<StudentInfo>& students);
+
+}
+
+void splitAString();
+std::vector<std::string> split(const std::string& sentence);
 
 #endif // DECLARATION_H
