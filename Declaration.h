@@ -1,6 +1,7 @@
 #ifndef DECLARATION_H
 #define DECLARATION_H
 
+#include <string>
 #include <vector>
 #include <istream>
 #include "Studentinfo.h"
@@ -32,4 +33,5 @@ std::vector<StudentInfo> extractFailsByIter(std::vector<StudentInfo>& students);
 void splitAString();
 std::vector<std::string> split(const std::string& sentence);
 
+std::vector<std::string> framingAVector(const std::vector<std::string>& sentence);
 #endif // DECLARATION_H

@@ -1,14 +1,18 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <algorithm> //max
 
 #include "Declaration.h"
 
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+using std::string;
+
 void framingAName()
 {
-    using std::cin;
-    using std::cout;
-    using std::endl;
-
     cout<<"Input a Name: "<<endl;
     std::string name;
     cin>>name;
@@ -38,5 +42,14 @@ void framingAName()
             }
         }
         cout << endl;
+    }
+}
+
+vector<string> framingAVector(const vector<string>& sentence)
+{
+    string::size_type width = 0;
+    for(vector<string>::size_type i = 0; i < sentence.size(); ++i)
+    {
+        width = std::max(width, sentence[i].size());
     }
 }
