@@ -61,6 +61,15 @@ void framingAVector()
     {
         cout << *iter << endl;
     }
+
+    cout << endl << endl << "Virtical Connect:" << endl;
+    vector<string> virticalConnetion = virticalConnect(sentence, frame);
+    for(vector<string>::const_iterator iter = virticalConnetion.begin();
+        iter != virticalConnetion.end();
+        ++iter)
+    {
+        cout << *iter << endl;
+    }
 }
 
 vector<string> framingAVector(const vector<string>& sentence)
@@ -85,5 +94,14 @@ vector<string> framingAVector(const vector<string>& sentence)
         ret.push_back(currentRow);
     }
     ret.push_back(border);
+    return ret;
+}
+
+std::vector<std::string> virticalConnect(const std::vector<std::string> &top,
+                                         const std::vector<std::string> &bottom)
+{
+    vector<string> ret;
+    ret.insert(ret.begin(), top.begin(), top.end());
+    ret.insert(ret.end(), bottom.begin(), bottom.end());
     return ret;
 }
