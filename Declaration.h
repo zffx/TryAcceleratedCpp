@@ -33,5 +33,6 @@ std::vector<StudentInfo> extractFailsByIter(std::vector<StudentInfo>& students);
 void splitAString();
 std::vector<std::string> split(const std::string& sentence);
 
+void framingAVector();
 std::vector<std::string> framingAVector(const std::vector<std::string>& sentence);
 #endif // DECLARATION_H

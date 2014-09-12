@@ -45,11 +45,45 @@ void framingAName()
     }
 }
 
-vector<string> framingAVector(const vector<string>& sentence)
+void framingAVector()
 {
+    vector<string> sentence;
+    sentence.push_back("Welcome");
+    sentence.push_back("to");
+    sentence.push_back("my");
+    sentence.push_back("world!");
+
+    vector<string> frame;
+    frame = framingAVector(sentence);
+    for(vector<string>::const_iterator iter = frame.begin();
+        iter != frame.end();
+        ++iter)
+    {
+        cout << *iter << endl;
+    }
+}
+
+vector<string> framingAVector(const vector<string>& sentence)
+{    
     string::size_type width = 0;
     for(vector<string>::size_type i = 0; i < sentence.size(); ++i)
     {
         width = std::max(width, sentence[i].size());
     }
+
+    vector<string> ret;
+
+    string border(width+4, '*');
+    ret.push_back(border);
+    string currentRow;
+    for(vector<string>::size_type i = 0; i < sentence.size(); ++i)
+    {
+        //Note:
+        //here you CANNOT use '*' + sentence[i], it has to be "* " + sentence[i]
+        currentRow = "* " + sentence[i] +
+                std::string(width + 1 - sentence[i].size(), ' ') + "*";
+        ret.push_back(currentRow);
+    }
+    ret.push_back(border);
+    return ret;
 }

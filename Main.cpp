@@ -11,8 +11,8 @@ int main()
          << "1. Framing a name" << endl
          << "2. Calculate final grade with Avg homework grade" << endl
          << "3. Calculate final grade with Med homework grade" << endl
-         << "4. Split a sentence with \' \'" << endl;
-
+         << "4. Split a sentence with \' \'" << endl
+         << "5. Framing a sentence" << endl;
     unsigned int choice = 0;
     cin >> choice ;
 
@@ -30,6 +30,8 @@ int main()
     case 4:
         splitAString();
         break;
+    case 5:
+        framingAVector();
     default:
         break;
     }
