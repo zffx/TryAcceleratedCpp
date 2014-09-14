@@ -34,9 +34,14 @@ void splitAString();
 std::vector<std::string> split(const std::string &sentence);
 
 void framingAVector();
+
 std::vector<std::string> framingAVector(const std::vector<std::string> &sentence);
 
-std::vector<std::string> virticalConnect(const std::vector<std::string> &top,
+std::string::size_type width(const std::vector<std::string> &sentence);
+
+std::vector<std::string> verticalConcatenate(const std::vector<std::string> &top,
                                          const std::vector<std::string> &bottom);
 
+std::vector<std::string> horizontalConcatenate(const std::vector<std::string> &left,
+										   const std::vector<std::string> &right);
 #endif // DECLARATION_H
