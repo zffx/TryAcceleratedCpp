@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm> //max
+#include <algorithm> //max, copy
 
 #include "Declaration.h"
 
@@ -118,8 +118,12 @@ vector<string> verticalConcatenate(const vector<string> &top,
 {
     vector<string> ret;
     //This is the right way to concatenate to vector!
+    //vector.insert()
     ret.insert(ret.begin(), top.begin(), top.end());
-    ret.insert(ret.end(), bottom.begin(), bottom.end());
+
+    //This is a even better way to concatenate vector!
+    //std::copy()
+    std::copy(bottom.begin(), bottom.end(), std::back_inserter(ret));
     return ret;
 }
 

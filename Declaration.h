@@ -33,6 +33,11 @@ std::vector<StudentInfo> extractFailsByIter(std::vector<StudentInfo> &students);
 void splitAString();
 std::vector<std::string> split(const std::string &sentence);
 
+bool space(char c);
+bool notSpace(char c);
+std::vector<std::string> splitAdvanced(const std::string &sentence);
+
+
 void framingAVector();
 
 std::vector<std::string> framingAVector(const std::vector<std::string> &sentence);
