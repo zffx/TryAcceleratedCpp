@@ -23,7 +23,7 @@ typedef vector<double>::size_type vecDoublesz;
 
 double median(std::vector<double> homeworkGrades)
 {
-	vecDoublesz size = homeworkGrades.size();
+    vecDoublesz size = homeworkGrades.size();
     if ( size == 0)
     {
         cout << endl << "You must enter your grades. Try again." << endl;
@@ -85,8 +85,8 @@ vector<StudentInfo> extractFailsByIter(vector<StudentInfo>& students)
     vector<StudentInfo> fails;
     vector<StudentInfo>::iterator iter = students.begin();
     while(iter != students.end())//you have to keep students.end() here for each
-    //round of the loop, instead of take the value first(e.g. assign it to end_iter)
-    //and use it here, since erase() invalidates the end_iter.
+        //round of the loop, instead of take the value first(e.g. assign it to end_iter)
+        //and use it here, since erase() invalidates the end_iter.
     {
         if(gradeFail(*iter))
         {
@@ -128,18 +128,18 @@ void med()
             streamsize defaultPrec = cout.precision();
             cout << iter->name()<<"\'s"
                  << string(maxLength - (*iter).name().size()+1, ' ')
-        /*
-        In order to execute correctly, this expression requires parentheses that
-        override the normal operator precedence. The exporession *iter returns
-        the value that the iterator iter denotes. The precedence of . is higher
-        than the precedence of *, wich means  that if we want the * operations
-        to apply only to the left operand of the ., we must enclose *iter in
-        parentheses to get (*iter). If we wrote *iter.name, the complier would
-        treat it as *(iter.name).
-        */
+                    /*
+                In order to execute correctly, this expression requires parentheses that
+                override the normal operator precedence. The exporession *iter returns
+                the value that the iterator iter denotes. The precedence of . is higher
+                than the precedence of *, wich means  that if we want the * operations
+                to apply only to the left operand of the ., we must enclose *iter in
+                parentheses to get (*iter). If we wrote *iter.name, the complier would
+                treat it as *(iter.name).
+                */
                  <<" overall grade is "
-                 << setprecision(3) << (*iter).grade()
-                 << setprecision(defaultPrec) << endl;
+                << setprecision(3) << (*iter).grade()
+                << setprecision(defaultPrec) << endl;
         }
         catch (std::domain_error &e)
         {
@@ -167,6 +167,5 @@ void med()
         }
     }
 }
-
 
 }

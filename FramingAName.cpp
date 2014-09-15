@@ -17,7 +17,7 @@ void framingAName()
     string name;
     cin>>name;
     string frame = "Hello, " + name +"!";
-/*
+    /*
 
   *************
   *           *
@@ -114,7 +114,7 @@ string::size_type width(const vector<string> &sentence)
 }
 
 vector<string> verticalConcatenate(const vector<string> &top,
-                                         const vector<string> &bottom)
+                                   const vector<string> &bottom)
 {
     vector<string> ret;
     //This is the right way to concatenate to vector!
@@ -130,40 +130,40 @@ vector<string> verticalConcatenate(const vector<string> &top,
 
 /*
 this is an  **************
-example		* this is an *
-to			* example	 *
-illustrate	* to		 *
-framing		* illustrate *
-			* framing	 *
-			**************
+example     * this is an *
+to          * example    *
+illustrate  * to         *
+framing     * illustrate *
+            * framing    *
+            **************
 */
 
 vector<string> horizontalConcatenate(const vector<string> &left,
-		const vector<string> &right)
+                                     const vector<string> &right)
 {
-	vector<string> ret;
-	string::size_type w = width(left) + 1;
-	vector<string>::size_type i = 0, j = 0;
+    vector<string> ret;
+    string::size_type w = width(left) + 1;
+    vector<string>::size_type i = 0, j = 0;
 
-	while (i != left.size() || j != right.size())
-	{
-		string cursor;
-		if(i != left.size())
-		{
-			cursor = left[i];
-			++i;
-		}
+    while (i != left.size() || j != right.size())
+    {
+        string cursor;
+        if(i != left.size())
+        {
+            cursor = left[i];
+            ++i;
+        }
 
-		//you cannot use w - left[i].size() here!
-		//you can use += to concatenate two strings.
-		cursor += string(w - cursor.size(), ' ');
+        //you cannot use w - left[i].size() here!
+        //you can use += to concatenate two strings.
+        cursor += string(w - cursor.size(), ' ');
 
-		if(j != right.size())
-		{
-			cursor += right[j];
-			++j;
-		}
-		ret.push_back(cursor);
-	}
-	return ret;
+        if(j != right.size())
+        {
+            cursor += right[j];
+            ++j;
+        }
+        ret.push_back(cursor);
+    }
+    return ret;
 }

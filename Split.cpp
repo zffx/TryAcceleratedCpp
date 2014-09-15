@@ -34,36 +34,49 @@ vector<string> split(const string& sentence)
     return ret;
 }
 
+/*
+    You HAVE TO provide your own space/notSpace method since
+    isspace() in <cctype> is overloaded and find_if will not
+    know which version of isspace() to call if you put it
+    directly there like: find_if(i, sentence.end(), isspace);
+    --Accelerated Cpp, book might be old?
+*/
 bool space(char c)
 {
-	return isspace(c);
+    return isspace(c);
 }
 
 bool notSpace(char c)
 {
-	return !space(c);
+    return !space(c);
 }
 
 std::vector<std::string> splitAdvanced(const std::string &sentence)
 {
-	vector<string> ret;
-	string::const_iterator i = sentence.begin(), j = sentence.begin();
-	while(i != sentence.end())
-	{
-		// ignore leading blanks
-		i = find_if(i,sentence.end(),notSpace);
+    vector<string> ret;
+    string::const_iterator i = sentence.begin(), j = sentence.begin();
+    while(i != sentence.end())
+    {
+        // ignore leading blanks
+        i = find_if(i,sentence.end(),notSpace);
 
-		// find end of next word
-		j = find_if(i, sentence.end(), space);
+        // find end of next word
+        /*seems I can use isspace directly here... */
+        j = find_if(i, sentence.end(), isspace);
 
-		// if we found some nonwhitespace characters
-		if(i != sentence.end())
-		{
-			ret.push_back(string(i,j));
-			i = j;
-		}
-	}
-	return ret;
+        // if we found some nonwhitespace characters
+        if(i != sentence.end())
+        {
+            ret.push_back(string(i,j));
+            i = j;
+        }
+    }
+    return ret;
+}
+
+bool is_palindrome(const string& s)
+{
+    return std::equal(s.begin(), s.end(), s.rbegin());
 }
 
 void splitAString()
@@ -71,13 +84,25 @@ void splitAString()
     cout << "The sentence is: Welcome to my world!" << endl;
     string sentence = "  Welcome to my world! ";
     vector<string> afterSplit;
-    //afterSplit = split(sentence);
-    afterSplit = splitAdvanced(sentence);
+    afterSplit = split(sentence);
     vector<string>::const_iterator constIter = afterSplit.begin();
-    cout << "Here is the result after split:" << endl;
+    cout << "Here is the result after split with index of std::string:" << endl;
     while(constIter != afterSplit.end())
     {
         cout << *constIter << endl;
         ++constIter;
     }
+
+    afterSplit = splitAdvanced(sentence);
+    cout << endl;
+    cout << "Here is the result after splitAdvanced with stl::algorithm:"
+         << endl;
+
+    constIter = afterSplit.begin();
+    while(constIter != afterSplit.end())
+    {
+        cout << *constIter << endl;
+        ++constIter;
+    }
+
 }
