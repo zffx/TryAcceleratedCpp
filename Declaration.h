@@ -28,8 +28,10 @@ std::vector<StudentInfo> extractFails(std::vector<StudentInfo> &students);
 
 std::vector<StudentInfo> extractFailsByIter(std::vector<StudentInfo> &students);
 
-}
+} //end of Utils
 
+
+//start of string operation
 void splitAString();
 std::vector<std::string> split(const std::string &sentence);
 
@@ -38,7 +40,10 @@ bool notSpace(char c);
 std::vector<std::string> splitAdvanced(const std::string &sentence);
 
 bool isPalindrome(const std::string& s);
+//end of string operation
 
+
+//start of framing
 void framingAVector();
 
 std::vector<std::string>
@@ -53,4 +58,12 @@ verticalConcatenate(const std::vector<std::string> &top,
 std::vector<std::string>
 horizontalConcatenate(const std::vector<std::string> &left,
                       const std::vector<std::string> &right);
+//end of framing
+
+//start of URL process
+void parseURLs();
+bool notUrlChar(char c);
+std::vector<std::string> findUrls(const std::string &s);
+//end of URL process
+
 #endif // DECLARATION_H

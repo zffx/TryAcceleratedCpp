@@ -8,7 +8,8 @@ SOURCES += \
     Avg.cpp \
     Med.cpp \
     Studentinfo.cpp \
-    Split.cpp
+    Split.cpp \
+    FindUrls.cpp
 
 HEADERS += \
     Declaration.h \

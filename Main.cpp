@@ -12,7 +12,8 @@ int main()
          << "2. Calculate final grade with Avg homework grade" << endl
          << "3. Calculate final grade with Med homework grade" << endl
          << "4. Split a sentence with \' \'" << endl
-         << "5. Framing a sentence" << endl;
+         << "5. Framing a sentence" << endl
+         << "6. Finding URLs from a string" << endl;
     unsigned int choice = 0;
     cin >> choice ;
 
@@ -32,6 +33,10 @@ int main()
         break;
     case 5:
         framingAVector();
+        break;
+    case 6:
+        parseURLs();
+        break;
     default:
         break;
     }
