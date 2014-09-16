@@ -74,7 +74,7 @@ std::vector<std::string> splitAdvanced(const std::string &sentence)
     return ret;
 }
 
-bool is_palindrome(const string& s)
+bool isPalindrome(const string& s)
 {
     return std::equal(s.begin(), s.end(), s.rbegin());
 }
@@ -104,5 +104,15 @@ void splitAString()
         cout << *constIter << endl;
         ++constIter;
     }
+    cout << endl << "sentence is " << sentence << endl;
+    cout << "isPalindrome: ";
+    string palindrome = isPalindrome(sentence)? "true" : "false";
+    cout << palindrome << endl;
+
+    sentence = "YannaY";
+    cout << "sentence changed to YannaY" << endl;
+    cout << "isPalindrome: ";
+    palindrome = isPalindrome(sentence)? "true" : "false";
+    cout << palindrome << endl;
 
 }

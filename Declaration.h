@@ -37,7 +37,7 @@ bool space(char c);
 bool notSpace(char c);
 std::vector<std::string> splitAdvanced(const std::string &sentence);
 
-bool is_palindrome(const std::string& s);
+bool isPalindrome(const std::string& s);
 
 void framingAVector();
 
