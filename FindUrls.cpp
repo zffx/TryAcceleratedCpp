@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <algorithm>
+#include <algorithm> //std::search
 
 /*
 URL example:
@@ -12,50 +12,47 @@ protocol-name://resource-name
 
 bool notUrlChar(char c)
 {
-    static const std::string validUrlChars = "~;/?:@=&$-_.+!8'()";
-    return (find(validUrlChars.begin(), validUrlChars.end(),c)
-                                        == validUrlChars.end()&&
-            !isalnum(c));
+    static const std::string validUrlChars = "~;/?:@=&$-_.+!*'()"; //static const!
+    return (
+                /*
+                  c is not a letter or a number,
+                  and c is not one of the valideUrlChars above
+                */
+                find(validUrlChars.begin(), validUrlChars.end(),c) == validUrlChars.end() &&
+                !isalnum(c)
+                );
 }
 
 std::vector<std::string> findUrls(const std::string &s)
 {
     std::vector<std::string> ret;
-    std::string::const_iterator iterI = s.begin();
-    std::string::const_iterator iterJ = s.begin();
-    std::string::const_iterator iterB = s.begin();
-    std::string::const_iterator iterE = s.begin();
+    typedef std::string::const_iterator iter;
+    iter iterI = s.begin();
+
     std::string separator = "://";
 
     while((iterI = std::search(iterI,
                                s.end(),
                                separator.begin(),
-                               separator.end())) != s.end())
+                               separator.end())) != s.end()) //std::search!
     {
-        if(iterI == s.begin())
+        if(iterI != s.begin() && iterI +separator.length() != s.end())
         {
-            iterI = iterI + separator.size();
-            continue;
-        }
-        if(iterJ == iterI + separator.size())
-        {
-            break;
-        }
-        iterJ = iterI + separator.size();
+            iter iterB = iterI;
+            while(isalpha(*(iterB - 1)) && iterB != s.begin())
+            // *(iterB -1) equals to iterB[-1]
+            {
+                --iterB;
+            }
 
-        iterE = iterB = iterI;
-        while(isalpha(*(iterB -1)) && iterB != s.begin())
-        {
-            --iterB;
+            iter iterE = std::find_if(iterI, s.end(),notUrlChar);
+
+            if((iterB != iterI) && !notUrlChar(iterI[separator.size()]))
+            {
+                ret.push_back(std::string(iterB, iterE)); //string(iter1, iter2)
+            }
         }
-        //std::cout << "*iterB " << *iterB << std::endl;
-        iterE = std::find_if(iterJ, s.end(),notUrlChar);
-        //std::cout << "*iterE " << *iterE << std::endl;
-        if((iterB != iterI) && !notUrlChar(*(iterI+separator.size())))
-        {
-            ret.push_back(std::string(iterB, iterE));
-        }
-        iterI = iterJ;
+        iterI = iterI + separator.size();
     }
     return ret;
 }
