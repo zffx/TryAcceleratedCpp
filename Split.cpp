@@ -27,7 +27,7 @@ vector<string> split(const string& sentence)
         // if we found some nonwhitespace characters
         if(i != j )
         {
-            ret.push_back(sentence.substr(i,j - i));
+            ret.push_back(sentence.substr(i,j - i)); //string.substr(i,j)!!
             i = j;
         }
     }
@@ -39,7 +39,7 @@ vector<string> split(const string& sentence)
     isspace() in <cctype> is overloaded and find_if will not
     know which version of isspace() to call if you put it
     directly there like: find_if(i, sentence.end(), isspace);
-    --Accelerated Cpp, book might be old?
+    --Accelerated Cpp
 */
 bool space(char c)
 {
@@ -61,7 +61,8 @@ std::vector<std::string> splitAdvanced(const std::string &sentence)
         i = find_if(i,sentence.end(),notSpace);
 
         // find end of next word
-        /*seems I can use isspace directly here... */
+        /*seems I can use isspace directly here...
+          book might be old?*/
         j = find_if(i, sentence.end(), isspace);
 
         // if we found some nonwhitespace characters

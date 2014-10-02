@@ -95,22 +95,13 @@ vector<string> framingAVector(const vector<string>& sentence)
     {
         //Note:
         //here you CANNOT use '*' + sentence[i], it has to be "* " + sentence[i]
+        //char cannot be implicitly converted to string for "+" operation!
         currentRow = "* " + sentence[i] +
                 string(w + 1 - sentence[i].size(), ' ') + "*";
         ret.push_back(currentRow);
     }
     ret.push_back(border);
     return ret;
-}
-
-string::size_type width(const vector<string> &sentence)
-{
-    string::size_type width = 0;
-    for(vector<string>::size_type i = 0; i < sentence.size(); ++i)
-    {
-        width = std::max(width, sentence[i].size());
-    }
-    return width;
 }
 
 vector<string> verticalConcatenate(const vector<string> &top,
@@ -154,7 +145,7 @@ vector<string> horizontalConcatenate(const vector<string> &left,
             ++i;
         }
 
-        //you cannot use w - left[i].size() here!
+        //you cannot use w - left[i].size() here! IndexOutOfBounds for last i!
         //you can use += to concatenate two strings.
         cursor += string(w - cursor.size(), ' ');
 
@@ -166,4 +157,15 @@ vector<string> horizontalConcatenate(const vector<string> &left,
         ret.push_back(cursor);
     }
     return ret;
+}
+
+
+string::size_type width(const vector<string> &sentence)
+{
+    string::size_type width = 0;
+    for(vector<string>::size_type i = 0; i < sentence.size(); ++i)
+    {
+        width = std::max(width, sentence[i].size());
+    }
+    return width;
 }

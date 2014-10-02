@@ -5,8 +5,10 @@
 #include <iostream>
 #include <algorithm>
 
-//URL:
-// protocol-name://resource-name
+/*
+URL example:
+protocol-name://resource-name
+*/
 
 bool notUrlChar(char c)
 {

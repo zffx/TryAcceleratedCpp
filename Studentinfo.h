@@ -24,5 +24,7 @@ private:
     std::vector<double> mHomeworkGrades;
 };
 
+/*Methods that doesn't impact the value of the attributes in a class should not
+be a method inside the class*/
     bool compare(const StudentInfo& student1, const StudentInfo& student2);
 #endif // STUDENTINFO_H

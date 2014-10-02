@@ -36,6 +36,8 @@ void avg()
         ++count;
     }
 
+    //Use cout.precision to set the precision of output
+    //streamsize type
     streamsize defaultPrec = cout.precision();
     double overallGrade = midterm * 0.2 + final * 0.4 + sum / count * 0.4;
     cout << "Your overall grade is " << setprecision(3) << overallGrade <<
