@@ -16,6 +16,8 @@ public:
     double grade() const;
 
     std::string name() const;
+    const std::vector<double>& homeworkGradesConst() const;
+    std::vector<double>& homeworkGradesConst();
 
 private:
     std::string mName;
@@ -27,4 +29,6 @@ private:
 /*Methods that doesn't impact the value of the attributes in a class should not
 be a method inside the class*/
     bool compare(const StudentInfo& student1, const StudentInfo& student2);
+    bool didAllHomework(const StudentInfo& studentInfo);
+
 #endif // STUDENTINFO_H

@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <algorithm> //std::search
+#include <algorithm> //std::search, std::find
 
 /*
 URL example:
@@ -18,7 +18,7 @@ bool notUrlChar(char c)
                   c is not a letter or a number,
                   and c is not one of the valideUrlChars above
                 */
-                find(validUrlChars.begin(), validUrlChars.end(),c) == validUrlChars.end() &&
+                std::find(validUrlChars.begin(), validUrlChars.end(),c) == validUrlChars.end() &&
                 !isalnum(c)
                 );
 }

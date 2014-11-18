@@ -50,8 +50,23 @@ std::string StudentInfo::name() const
     return mName;
 }
 
+const std::vector<double>& StudentInfo::homeworkGradesConst() const
+{
+	return mHomeworkGrades;
+}
+
+std::vector<double>& StudentInfo::homeworkGradesConst()
+{
+	return mHomeworkGrades;
+}
+
+
 bool compare(const StudentInfo& student1, const StudentInfo& student2)
 {
     return student1.name()< student2.name();
 }
 
+bool didAllHomework(const StudentInfo& studentInfo)
+{
+	//find(studentInfo.)
+}
