@@ -18,7 +18,9 @@ bool notUrlChar(char c)
                   c is not a letter or a number,
                   and c is not one of the valideUrlChars above
                 */
-                std::find(validUrlChars.begin(), validUrlChars.end(),c) == validUrlChars.end() &&
+                std::find(
+                    validUrlChars.begin(),
+                    validUrlChars.end(),c) == validUrlChars.end() &&
                 !isalnum(c)
                 );
 }

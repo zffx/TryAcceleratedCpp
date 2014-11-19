@@ -1,5 +1,6 @@
 #include "Studentinfo.h"
 #include "Declaration.h"
+#include <algorithm> //find
 
 #include <iostream>
 
@@ -50,12 +51,12 @@ std::string StudentInfo::name() const
     return mName;
 }
 
-const std::vector<double>& StudentInfo::homeworkGradesConst() const
+const std::vector<double>& StudentInfo::homeworkGradesConst()const
 {
 	return mHomeworkGrades;
 }
 
-std::vector<double>& StudentInfo::homeworkGradesConst()
+std::vector<double>& StudentInfo::homeworkGrades()
 {
 	return mHomeworkGrades;
 }
@@ -68,5 +69,9 @@ bool compare(const StudentInfo& student1, const StudentInfo& student2)
 
 bool didAllHomework(const StudentInfo& studentInfo)
 {
-	//find(studentInfo.)
+    return ((std::find(studentInfo.homeworkGradesConst().begin(),
+                studentInfo.homeworkGradesConst().end(),
+                0))
+            ==
+            studentInfo.homeworkGradesConst().end());
 }

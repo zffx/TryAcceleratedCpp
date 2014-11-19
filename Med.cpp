@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm> //std::sort
 #include <stdexcept> //std::domain_error
+#include <fstream>
 
 #include "Declaration.h"
 #include "Studentinfo.h"
@@ -108,13 +109,15 @@ void med()
     vector<StudentInfo> studentList;
     StudentInfo student;
     string::size_type maxLength = 0;
-    while (student.readStudentInfo(cin))
+
+    std::ifstream infile("./data/grades");
+    while (student.readStudentInfo(infile))
     {
         maxLength = std::max(maxLength, student.name().size());
         studentList.push_back(student);
     }
 
-    //studentList = extractFails(studentList); //uncomment to exam extractFails()
+    //studentList = extractFails(studentList);//uncomment to exam extractFails()
     studentList = extractFailsByIter(studentList);
     std::sort(studentList.begin(), studentList.end(), compare);
 
@@ -128,14 +131,15 @@ void med()
             streamsize defaultPrec = cout.precision();
             cout << iter->name()<<"\'s"
                  << string(maxLength - (*iter).name().size()+1, ' ')
-                    /*
-                In order to execute correctly, this expression requires parentheses that
-                override the normal operator precedence. The exporession *iter returns
-                the value that the iterator iter denotes. The precedence of . is higher
-                than the precedence of *, wich means  that if we want the * operations
-                to apply only to the left operand of the ., we must enclose *iter in
-                parentheses to get (*iter). If we wrote *iter.name, the complier would
-                treat it as *(iter.name).
+                /*
+                In order to execute correctly, this expression requires
+                parentheses that override the normal operator precedence.
+                The exporession *iter returns the value that the iterator
+                iter denotes. The precedence of . is higher than the precedence
+                of *, wich means  that if we want the * operations to apply
+                only to the left operand of the ., we must enclose *iter in
+                parentheses to get (*iter). If we wrote *iter.name, the complier
+                would treat it as *(iter.name).
                 */
                  <<" overall grade is "
                 << setprecision(3) << (*iter).grade()

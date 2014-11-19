@@ -17,7 +17,7 @@ public:
 
     std::string name() const;
     const std::vector<double>& homeworkGradesConst() const;
-    std::vector<double>& homeworkGradesConst();
+    std::vector<double>& homeworkGrades();
 
 private:
     std::string mName;

@@ -1,7 +1,7 @@
 #include "Declaration.h"
 
 #include <string>
-#include <algorithm> //find_if()
+#include <algorithm> //find_if(), equal()
 
 using std::vector;
 using std::string;

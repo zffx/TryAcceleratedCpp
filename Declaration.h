@@ -30,6 +30,9 @@ std::vector<StudentInfo> extractFailsByIter(std::vector<StudentInfo> &students);
 
 } //end of Utils
 
+//start of grade analysis
+void analyseGrades();
+//end of grade analysis
 
 //start of string operation
 void splitAString();
