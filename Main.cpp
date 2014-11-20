@@ -24,10 +24,10 @@ int main()
         framingAName();
         break;
     case 2:
-        Utils::avg();
+        avg();
         break;
     case 3:
-        Utils::med();
+        med();
         break;
     case 4:
         splitAString();

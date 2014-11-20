@@ -1,14 +1,14 @@
 #include <iomanip>
-#include <istream>
-#include <iostream>
+
 #include <string>
 #include <vector>
+#include <fstream>
 #include <algorithm> //std::sort
 #include <stdexcept> //std::domain_error
-#include <fstream>
 
 #include "Declaration.h"
 #include "Studentinfo.h"
+#include "Utils.h"
 
 using std::string;
 using std::cin;
@@ -18,92 +18,8 @@ using std::streamsize;
 using std::setprecision;
 using std::vector;
 
-namespace Utils
-{
-typedef vector<double>::size_type vecDoublesz;
 
-double median(std::vector<double> homeworkGrades)
-{
-    vecDoublesz size = homeworkGrades.size();
-    if ( size == 0)
-    {
-        cout << endl << "You must enter your grades. Try again." << endl;
-        throw std::domain_error("Homework Grades cannot be empty!");
-    }
-
-    std::sort(homeworkGrades.begin(),homeworkGrades.end());
-
-
-    double medGrade = size % 2 == 0 ?
-                (homeworkGrades.at(size/2) + homeworkGrades[size/2-1]) / 2 :
-                homeworkGrades.at(size/2);
-    //.at() has boundary check but [] doesn't
-    return medGrade;
-}
-
-double grade(double midterm, double final, double homework)
-{
-    return midterm * 0.2 + final * 0.4 + homework * 0.4;
-}
-
-double grade(double midterm,
-             double final,
-             const std::vector<double>& homeworkGrades)
-{
-    if (homeworkGrades.size() == 0)
-    {
-        throw std::domain_error("Student hasn't done any homework!");
-    }
-
-    return grade(midterm, final, median(homeworkGrades));
-}
-
-bool gradeFail(const StudentInfo& studentInfo)
-{
-    return studentInfo.grade() < 60 ? true : false;
-}
-
-vector<StudentInfo> extractFails(vector<StudentInfo>& students)
-{
-    vector<StudentInfo> fails;
-    vector<StudentInfo>::size_type i = 0;
-    while(i < students.size()) //students.size() can change in the loop!
-    {
-        if(gradeFail(students.at(i)))
-        {
-            fails.push_back(students.at(i));
-            students.erase(students.begin()+i); //you can only erase an element
-            //by an iterator! students.begin()+i
-        }
-        else
-            ++i;
-    }
-    return fails;
-}
-
-vector<StudentInfo> extractFailsByIter(vector<StudentInfo>& students)
-{
-    vector<StudentInfo> fails;
-    vector<StudentInfo>::iterator iter = students.begin();
-    while(iter != students.end())//you have to keep students.end() here for each
-        //round of the loop, instead of take the value first(e.g. assign it to end_iter)
-        //and use it here, since erase() invalidates the end_iter.
-    {
-        if(gradeFail(*iter))
-        {
-            fails.push_back(*iter);
-            iter = students.erase(iter); /* You have to assign the return value
-            back to iter again! Since vector.erase(iter) invalidates the iter
-            and all iterators that refer to elements after the one that was just
-            erased. erase() returns an iterator that is poistioned on the element
-            that follows the one that we just erased.*/
-        }
-        else
-            ++iter;
-    }
-    return fails;
-}
-
+using namespace Utils;
 void med()
 {
     vector<StudentInfo> studentList;
@@ -172,4 +88,4 @@ void med()
     }
 }
 
-}
+

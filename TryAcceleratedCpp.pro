@@ -10,9 +10,11 @@ SOURCES += \
     Studentinfo.cpp \
     Split.cpp \
     FindUrls.cpp \
-    AnalyseGrades.cpp
+    AnalyseGrades.cpp \
+    Utils.cpp
 
 HEADERS += \
     Declaration.h \
-    Studentinfo.h
+    Studentinfo.h \
+    Utils.h
 

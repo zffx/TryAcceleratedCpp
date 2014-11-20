@@ -3,34 +3,25 @@
 
 #include <string>
 #include <vector>
-#include <istream>
+#include <iostream>
 #include "Studentinfo.h"
 
 void framingAName();
-
-namespace Utils
-{
 void avg();
-
-double median(std::vector<double> homeworkGrades);
-
-double grade(double midterm, double final, double homework);
-double grade(
-        double midterm,
-        double final,
-        const std::vector<double> &homeworkGrades);
-
 void med();
 
-bool gradeFail(const StudentInfo &studentInfo);
-
-std::vector<StudentInfo> extractFails(std::vector<StudentInfo> &students);
-
-std::vector<StudentInfo> extractFailsByIter(std::vector<StudentInfo> &students);
-
-} //end of Utils
 
 //start of grade analysis
+double medianAnalysis(const std::vector<StudentInfo>&);
+double averageAnalysis(const std::vector<StudentInfo>&);
+double optMedianAnalysis(const std::vector<StudentInfo>&);
+
+void writeAnalysis(std::ostream& out,
+                   const std::string& name,
+                   double analysisFunction(const std::vector<StudentInfo>&),
+                   const std::vector<StudentInfo>& did,
+                   const std::vector<StudentInfo>& didnt);
+
 void analyseGrades();
 //end of grade analysis
 

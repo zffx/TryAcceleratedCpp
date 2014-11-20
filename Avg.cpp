@@ -11,8 +11,6 @@ using std::endl;
 using std::streamsize;
 using std::setprecision;
 
-namespace Utils
-{
 void avg()
 {
     cout << "Enter your first name: " << endl;
@@ -42,5 +40,4 @@ void avg()
     double overallGrade = midterm * 0.2 + final * 0.4 + sum / count * 0.4;
     cout << "Your overall grade is " << setprecision(3) << overallGrade <<
          setprecision(defaultPrec) << endl;
-}
 }

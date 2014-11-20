@@ -1,7 +1,8 @@
 #include "Studentinfo.h"
 #include "Declaration.h"
-#include <algorithm> //find
+#include "Utils.h"
 
+#include <algorithm> //find
 #include <iostream>
 
 using std::cout;
@@ -61,6 +62,15 @@ std::vector<double>& StudentInfo::homeworkGrades()
 	return mHomeworkGrades;
 }
 
+double StudentInfo::midterm() const
+{
+    return mMidterm;
+}
+
+double StudentInfo::final() const
+{
+    return mFinal;
+}
 
 bool compare(const StudentInfo& student1, const StudentInfo& student2)
 {

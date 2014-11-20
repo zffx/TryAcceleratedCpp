@@ -18,6 +18,8 @@ public:
     std::string name() const;
     const std::vector<double>& homeworkGradesConst() const;
     std::vector<double>& homeworkGrades();
+    double midterm() const;
+    double final() const;
 
 private:
     std::string mName;
