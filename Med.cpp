@@ -33,8 +33,12 @@ void med()
         studentList.push_back(student);
     }
 
+    //below are different ways of extract fails
     //studentList = extractFails(studentList);//uncomment to exam extractFails()
-    studentList = extractFailsByIter(studentList);
+    //studentList = extractFailsByIter(studentList);
+    //studentList = extractFailsByRmCp(studentList);
+    studentList = extractFailsByPartition(studentList);
+
     std::sort(studentList.begin(), studentList.end(), compare);
 
     //iterator version
