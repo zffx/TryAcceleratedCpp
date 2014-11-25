@@ -18,7 +18,6 @@ using std::streamsize;
 using std::setprecision;
 using std::vector;
 
-
 using namespace Utils;
 void med()
 {

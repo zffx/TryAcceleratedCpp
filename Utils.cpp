@@ -79,7 +79,11 @@ double gradeAverage(const StudentInfo &studentInfo)
 double gradeOptMedian(const StudentInfo &studentInfo)
 {
     vector<double> turnedInHomework;
-    //std::remove_copy
+    /*
+    std::remove_copy
+    exclude all the elements with value 0.0 and copy all the
+    other elements to turnedInHomework
+    */
     std::remove_copy(studentInfo.homeworkGradesConst().begin(),
                      studentInfo.homeworkGradesConst().end(),
                      std::back_inserter(turnedInHomework),
@@ -153,17 +157,20 @@ vector<StudentInfo> extractFailsByIter(vector<StudentInfo>& students)
 vector<StudentInfo> extractFailsByRmCp(vector<StudentInfo> &students)
 {
     vector<StudentInfo> failed;
-    //remove_copy_if(), move all failed students to failed vector
+    /*
+    remove_copy_if()
+    exclude all elements fufil gradePass and copy all the other elements
+    (students with failed grade) to failed vector
+    */
     std::remove_copy_if(students.begin(),
                         students.end(),
                         std::back_inserter(failed),
                         gradePass);
 
-    /*remove_if() does not really delete/erease the elements fufil the
+    /*remove_if() does not really delete/erease the elements fufilling the
     condition, it reorders the vector, put all elements which doesn't fufil the
-    condition in the front and the ones which fufil the condition in the end,
-    and it returns the iterator pointing to the first element that fulfil the
-    condition*/
+    condition in the front, and it returns the iterator pointing to the end of
+    the "good" elements*/
 
     /*then use vector.erase() to delete the failed elements in the end of the
       vector*/
@@ -182,6 +189,15 @@ vector<StudentInfo> extractFailsByPartition(vector<StudentInfo> &students)
     vector<StudentInfo> failed(iter, students.end());
     students.erase(iter,students.end());
     return failed;
+    /*
+    Both remove_if and partition put the "good" elements first. partition puts
+    the "bad" elements after that, whereas remove_if does not specify what comes
+    after it -- it might be the bad elements, but it might also be copies of
+    any (either good or bad) elements.
+
+    For example, if you partition 1 2 3 4 5 on even, you might get 2 4 5 3 1
+    (note that each element occurs exactly once), whereas if you remove_if the
+    odd elements, you might get 2 4 3 4 5 (note the duplicates).*/
 }
 
 
