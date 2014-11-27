@@ -10,7 +10,6 @@ void framingAName();
 void avg();
 void med();
 
-
 //start of grade analysis
 double medianAnalysis(const std::vector<StudentInfo>&);
 double averageAnalysis(const std::vector<StudentInfo>&);
@@ -59,5 +58,10 @@ void parseURLs();
 bool notUrlChar(char c);
 std::vector<std::string> findUrls(const std::string &s);
 //end of URL process
+
+//start of same words statistics
+void removePunctuation(std::string& word);
+void sameWordStatistic(const std::string& txtFilePath);
+//start of same words statistics
 
 #endif // DECLARATION_H

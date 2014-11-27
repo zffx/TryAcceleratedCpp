@@ -1,0 +1,7 @@
+This template generates a whole family of functions, each of which takes two objects of 
+the same type and calls f  with the greater of the two objects. There's no need to 
+parenthesize parameters inside the function body, no need to worry about evaluating 
+parameters multiple times, etc. Furthermore, because callWithMax  is a real function, it 
+obeys scope and access rules. For example, it makes perfect sense to talk about an 
+inline functio n that is private to a class. In general, there's just no way to do that with a 
+macro.

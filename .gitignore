@@ -8,4 +8,5 @@ debug/
 .settings/
 .metadata/
 Default/
-
+object_script.TryAcceleratedCpp.Debug
+object_script.TryAcceleratedCpp.Release

@@ -1,5 +1,8 @@
-#include <iostream>
 #include "Declaration.h"
+
+#include <string>
+#include <iostream>
+
 
 using std::cin;
 using std::cout;
@@ -14,7 +17,8 @@ int main()
          << "4. Split a sentence with \' \'" << endl
          << "5. Framing a sentence" << endl
          << "6. Finding URLs from a string" << endl
-         << "7. Analyse students' grades" << endl;
+         << "7. Analyse students' grades" << endl
+         << "8. Number of same words in a sentence" << endl;
     unsigned int choice = 0;
     cin >> choice ;
 
@@ -40,6 +44,9 @@ int main()
         break;
     case 7:
         analyseGrades();
+        break;
+    case 8:
+        sameWordStatistic("./data/text_input");
         break;
     default:
         break;

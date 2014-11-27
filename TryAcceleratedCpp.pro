@@ -11,7 +11,8 @@ SOURCES += \
     Split.cpp \
     FindUrls.cpp \
     AnalyseGrades.cpp \
-    Utils.cpp
+    Utils.cpp \
+    SameWordStatistic.cpp
 
 HEADERS += \
     Declaration.h \
