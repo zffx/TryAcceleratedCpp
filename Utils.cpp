@@ -3,10 +3,20 @@
 
 #include <iostream>
 #include <vector>
+#include <stdexcept> //std::domain_error
+#include <numeric> //std::accumulate
 #include <algorithm> /*std::sort, std::remove_copy, std::remove_copy_if,
                        std::remove_if, std::parttition*/
-#include <numeric> //std::accumulate
-#include <stdexcept> //std::domain_error
+/*
+Algorithms act on container elements¡ªthey do not act on containers.
+The sort, remove_if, and partition functions all move elements to new positions
+in the underlying container, but they do not change the properties of the
+container itself. For example, remove_if does not change the size of the
+container on which it operates; it merely copies elements around within the
+container.When we need to shorten the vector to discard the "invalid" elements,
+we must do so ourselves with erase. Note that erase must be a member of vector
+because it acts directly on the container, not just on its elements.
+*/
 
 using std::string;
 using std::cin;
