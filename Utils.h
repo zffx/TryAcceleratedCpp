@@ -28,7 +28,8 @@ bool gradePass(const StudentInfo &studentInfo);
 std::vector<StudentInfo> extractFails(std::vector<StudentInfo> &students);
 std::vector<StudentInfo> extractFailsByIter(std::vector<StudentInfo> &students);
 std::vector<StudentInfo> extractFailsByRmCp(std::vector<StudentInfo> &students);
-std::vector<StudentInfo> extractFailsByPartition(std::vector<StudentInfo> &students);
+std::vector<StudentInfo> extractFailsByPartition(
+        std::vector<StudentInfo> &students);
 
 }
 
