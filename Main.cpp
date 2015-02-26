@@ -18,7 +18,8 @@ int main()
          << "5. Framing a sentence" << endl
          << "6. Finding URLs from a string" << endl
          << "7. Analyse students' grades" << endl
-         << "8. Number of same words in a sentence" << endl;
+         << "8. Number of same words in a sentence" << endl
+         << "9. Generate sentences" << endl;
     unsigned int choice = 0;
     cin >> choice ;
 
@@ -47,6 +48,9 @@ int main()
         break;
     case 8:
         sameWordStatistic("./data/text_input");
+        break;
+    case 9:
+        generateSentence("./data/grammar_input");
         break;
     default:
         break;

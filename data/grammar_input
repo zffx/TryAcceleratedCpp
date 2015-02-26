@@ -1,8 +1,8 @@
 <noun> cat
 <noun> dog
 <noun> table
-<noun_phrase> <adjective> <noun_phrase>
 <noun_phrase> <noun>
+<noun_phrase> <adjective> <noun_phrase>
 <adjective> large
 <adjective> brown
 <adjective> absurd

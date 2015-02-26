@@ -8,7 +8,7 @@
 #include <algorithm> /*std::sort, std::remove_copy, std::remove_copy_if,
                        std::remove_if, std::parttition*/
 /*
-Algorithms act on container elements¡ªthey do not act on containers.
+Algorithms act on container elements,they do not act on containers.
 The sort, remove_if, and partition functions all move elements to new positions
 in the underlying container, but they do not change the properties of the
 container itself. For example, remove_if does not change the size of the

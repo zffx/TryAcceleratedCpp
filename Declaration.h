@@ -64,4 +64,7 @@ void removePunctuation(std::string& word);
 void sameWordStatistic(const std::string& txtFilePath);
 //start of same words statistics
 
+//start of generate sentence
+void generateSentence(const std::string &txtFilePath);
+//end of generate sentence
 #endif // DECLARATION_H

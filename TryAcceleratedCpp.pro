@@ -1,6 +1,7 @@
 TEMPLATE = app
 CONFIG += console
 CONFIG -= qt
+CONFIG += c++11
 
 SOURCES += \
     FramingAName.cpp \
@@ -12,7 +13,8 @@ SOURCES += \
     FindUrls.cpp \
     AnalyseGrades.cpp \
     Utils.cpp \
-    SameWordStatistic.cpp
+    SameWordStatistic.cpp \
+    GenerateSentence.cpp
 
 HEADERS += \
     Declaration.h \
