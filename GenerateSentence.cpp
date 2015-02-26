@@ -53,19 +53,15 @@ string expand(const std::string& element ,const Grammar& grammar)
         vector<string>::const_iterator iter = ruleList[0].begin();
         for(;iter != ruleList[0].end(); ++iter)
         {
-            try{
                 ret = expand(*iter, grammar);
-            }
-            catch (...)
-            {
-                abort();
-            }
         }
     }
     else
     {
         return ret += element + " ";
     }
+    std::cout << ret << std::endl;
+    return ret;
 }
 
 void generateSentence(const std::string& txtFilePath)
