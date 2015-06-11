@@ -12,9 +12,15 @@ using std::map;
 using std::vector;
 using std::string;
 
-typedef vector<string> Rule;
-typedef vector<Rule> RuleCollection;
+
+typedef vector<string> Rule; //e.g.{<adj>, <noun-phrase>} {cat} {on, the, stairs}
+typedef vector<Rule> RuleCollection; //e.g. {{<noun>},{<adj>,<noun-phrase>}}
+
 typedef map<string, RuleCollection> Grammar;
+// e.g. key: <noun-phrase>  value: {{<noun>},{<adj>,<noun-phrase>}}
+//      key: <noun>         value: {{cat},{dog},{table}}
+//      key: <adj>          value: {{large},{brown},{absurd}}
+//      key: <sentence>     value: {{the, <noun-phrase>, <verb>, <location>}}
 
 Grammar readGrammar(std::istream& input)
 {
@@ -47,13 +53,13 @@ string expand(const std::string& element ,const Grammar& grammar)
     string ret;
     if(isExpandable(element))
     {
-        vector<Rule> ruleList;
-        ruleList = grammar.at(element);
+        vector<Rule> ruleCollection;
+        ruleCollection = grammar.at(element);
 
-        vector<string>::const_iterator iter = ruleList[0].begin();
-        for(;iter != ruleList[0].end(); ++iter)
+        vector<string>::const_iterator iter = ruleCollection[0].begin();
+        for(;iter != ruleCollection[0].end(); ++iter)
         {
-                ret = expand(*iter, grammar);
+                ret += expand(*iter, grammar);
         }
     }
     else
