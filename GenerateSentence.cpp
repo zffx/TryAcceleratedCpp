@@ -55,7 +55,7 @@ string expand(const std::string& element ,const Grammar& grammar)
     {
         vector<Rule> ruleCollection;
         ruleCollection = grammar.at(element);
-
+        //todo : change [0] into a random [i], where i < ruleCollection.size()
         vector<string>::const_iterator iter = ruleCollection[0].begin();
         for(;iter != ruleCollection[0].end(); ++iter)
         {
