@@ -31,6 +31,7 @@ std::vector<StudentInfo> extractFailsByRmCp(std::vector<StudentInfo> &students);
 std::vector<StudentInfo> extractFailsByPartition(
         std::vector<StudentInfo> &students);
 
+int randN(int n);
 }
 
 #endif // UTILS_H

@@ -1,6 +1,7 @@
 #include "Declaration.h"
 #include "Studentinfo.h"
 
+#include <time.h>
 #include <iostream>
 #include <vector>
 #include <stdexcept> //std::domain_error
@@ -210,6 +211,26 @@ vector<StudentInfo> extractFailsByPartition(vector<StudentInfo> &students)
     odd elements, you might get 2 4 3 4 5 (note the duplicates).*/
 }
 
+int randN(int n) //implement a real random number generator
+{
+    //Keep in mind, alway do sanity check before processing the argument
+    if(n < 0 || n > RAND_MAX)
+    {
+        throw std::domain_error("Argument to randN is our of range!");
+    }
+        std::cout <<  "input: " << n << std::endl;
+    int bucketSize = RAND_MAX/n;
+    int ret;
+    do
+    {
+        srand((unsigned)time(nullptr)+rand());
+        int randNumber = rand();
+        std::cout <<  "randNumber: " << randNumber << std::endl;
+        ret = randNumber/bucketSize;
+    } while (ret >= n);
+        std::cout <<  "ret: " << ret << std::endl;
+    return ret;
+}
 
 }//end of namespace Utils
 
